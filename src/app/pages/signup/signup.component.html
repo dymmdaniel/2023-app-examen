@@ -7,41 +7,43 @@
                 </div>
                 <h1 class="text-center">Registrate aqui</h1>
 
-                <form action="">
+                <form (ngSubmit) = "formSubmit()">
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Usuario </mat-label>
-                        <input matInput placeholder="Usuario">
+                        <input required [(ngModel)] ="user.username" name="username" matInput placeholder="Usuario">
+                        <mat-hint>El nombre de usuario debe ser unico</mat-hint>
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Nombres </mat-label>
-                        <input matInput placeholder="Nombres">
+                        <input required [(ngModel)] ="user.nombre" name="nombre" matInput placeholder="Nombres">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Apellidos </mat-label>
-                        <input matInput placeholder="Apellidos ">
+                        <input required [(ngModel)] ="user.apellido" name="apellido"  matInput placeholder="Apellidos ">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Email </mat-label>
-                        <input matInput placeholder="Email">
+                        <input required [(ngModel)] ="user.email" name="email" type="email" matInput placeholder="Email">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Telefono </mat-label>
-                        <input matInput placeholder="Telefono">
+                        <input [(ngModel)] ="user.telefono" name="telefono" type="number" matInput placeholder="Telefono">
                     </mat-form-field>
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Contraseña </mat-label>
-                        <input matInput placeholder="Contraseña">
-                    </mat-form-field>
+                        <input name="password_1" required [(ngModel)] ="password_1" type="password" matInput placeholder="Contraseña">
+                    </mat-form-field> 
                     <mat-form-field class="full-width" appearance="outline">
                         <mat-label>Repita la Contraseña </mat-label>
-                        <input matInput placeholder="Repita la Contraseña">
-                    </mat-form-field>
+                        <input name="password_2" required [(ngModel)] ="password_2" type="password"  matInput placeholder="Repita la Contraseña" (ngModelChange)="compararPasswords($event)">
+                        <mat-hint *ngIf="valido" style="color: red">Las contraseñas no coinciden</mat-hint>
+                    </mat-form-field>  
                     <div class="container text-center">
-                        <button math-raised-button color="primary">Registrar</button>
-                        <button style="margin-left: 20px;" math-raised-button color="accent">Registrar</button>
+                        <button mat-raised-button color="primary">Registrar</button>
+                        <button style="margin-left: 20px;" mat-raised-button color="accent">Limpiar</button>
                     </div>
                 </form>
-                <br> <br><br>
+                <br><br><br>
             </div>
         </div>
     </div>
